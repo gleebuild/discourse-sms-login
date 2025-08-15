@@ -1,0 +1,27 @@
+{{! discourse-sms-login/assets/javascripts/discourse/templates/sms-login.hbs }}
+<div class="sms-login">
+  <h2>{{i18n "login.title"}}</h2>
+  
+  <div class="login-options">
+    <button class="btn btn-primary active">短信登录</button>
+    <button class="btn" {{action "showPasswordLogin"}}>密码登录</button>
+  </div>
+  
+  <div class="input-group">
+    <span class="input-group-addon">+86</span>
+    <Input @type="text" @value={{this.phone}} placeholder="请输入手机号" class="form-control" />
+  </div>
+  
+  <div class="slider-verification">
+    <img src="/plugins/discourse-sms-login/images/slider.png" alt="滑动验证" />
+    <div class="slider-track">
+      <div class="slider-handle" {{action "slideVerify"}}></div>
+    </div>
+  </div>
+  
+  <button class="btn btn-primary" disabled={{not this.slideVerified}} {{action "nextStep"}}>下一步</button>
+  
+  <div class="new-user">
+    新用户? <a href="#" {{action "showRegister"}}>注册</a>
+  </div>
+</div>
